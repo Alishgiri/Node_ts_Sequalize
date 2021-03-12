@@ -11,6 +11,17 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      this.hasMany(models.Comment, {
+        foreignKey: 'postId',
+        as: 'comments',
+        onDelete: 'CASCADE',
+      });
+
+      this.belongsTo(models.User, {
+        foreignKey: 'userId',
+        as: 'author',
+        onDelete: 'CASCADE',
+      })
     }
   };
   Post.init({

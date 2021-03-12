@@ -11,6 +11,15 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      this.belongsTo(models.User, {
+        foreighKey: 'userId',
+        as: 'author',
+      });
+
+      this.belongsTo(models.Post, {
+        foreighKey: 'postId',
+        as: 'post',
+      })
     }
   };
   Comment.init({
