@@ -1,4 +1,6 @@
-const express = require('express');
+const express = require("express");
+
+const { initRoutes } = require("./routes");
 
 const app = express();
 
@@ -6,8 +8,6 @@ const port = process.env.PORT || 3000;
 
 app.use(express.json());
 
-app.get("/", (req: any, res: any) => {
-    res.json({ message: "Hello World!" })
-});
+initRoutes(app);
 
 app.listen(port, () => console.log(`Listining on port ${port}!`));
